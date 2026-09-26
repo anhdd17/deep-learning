@@ -1,0 +1,30 @@
+data:
+  max_seq_len: 100
+  vocab_size: 20000
+  min_freq: 2
+  train_ratio: 0.8
+  val_ratio: 0.1
+  # test_ratio: implied = 1 - train_ratio - val_ratio
+
+model:
+  embed_dim: 64
+  hidden_dim: 128
+  rnn_type: "custom"    # "custom" | "pytorch"
+
+training:
+  epochs: 10
+  batch_size: 64
+  lr: 0.001
+  seed: 42
+  clip_grad_norm: 5.0   # gradient clipping
+
+paths:
+  data: "data/raw"
+  artifacts: "artifacts"
+  logs: "logs"
+  runs: "runs"
+
+logging:
+  level: "INFO"         # DEBUG | INFO | WARNING | ERROR
+  console: true
+  file: true

@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data & model artifacts (too large for git)
+**/data/raw/
+**/data/cifar*/
+**/*.tar.gz
+**/artifacts/model.pt
+
+# Logs & TensorBoard
+logs/
+runs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Env
+.env

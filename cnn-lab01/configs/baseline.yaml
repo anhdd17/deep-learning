@@ -1,0 +1,24 @@
+# Mọi hyperparameter nằm ở đây, không hardcode trong code
+
+data:
+  dir: data/          # CIFAR-10 sẽ tự download vào đây
+  batch_size: 128
+  num_workers: 4      # tăng từ 2 lên 4, giảm data starvation khi augment
+
+model:
+  num_classes: 10
+  dropout: 0.5
+
+train:
+  epochs: 30
+  patience: 5   # dừng sớm nếu val_acc không tăng sau 5 epoch liên tiếp
+  seed: 42
+
+optimizer:
+  name: adam
+  lr: 0.001
+  weight_decay: 0.0001
+
+checkpoint:
+  dir: runs/          # lưu best model vào đây
+  save_best_only: true
