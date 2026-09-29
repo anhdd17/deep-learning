@@ -1,0 +1,13 @@
+torch>=2.0
+datasets
+pyyaml
+python-json-logger
+tensorboard
+fastapi
+uvicorn
+httpx
+pytest
+pydantic
+scikit-learn
+matplotlib
+pandas

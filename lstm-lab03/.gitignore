@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pycache
+.pytest_cache/
+
+# Model artifacts — vocab và model weights không push
+artifacts/*.pt
+artifacts/*.png
+
+# Data — không push raw data
+data/
+
+# Logs và TensorBoard runs
+logs/
+runs/
+
+# macOS
+.DS_Store

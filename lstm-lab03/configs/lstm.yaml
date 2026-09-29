@@ -1,0 +1,37 @@
+data:
+  max_len: 256
+  vocab_size: 20000
+  min_freq: 2
+  train_ratio: 0.8
+  val_ratio: 0.1
+
+model:
+  type: lstm
+  impl: custom
+  embed_dim: 64
+  hidden_size: 128
+  bidirectional: false
+  num_layers: 1
+  dropout: 0.0
+  forget_bias: 1.0
+
+train:
+  loss: bce_with_logits
+  optimizer: adam
+  lr: 0.001
+  epochs: 10
+  batch_size: 64
+  grad_clip: 5.0
+  early_stopping_patience: 3
+  seeds: [42]
+
+paths:
+  data: "data/raw"
+  artifacts: "artifacts"
+  logs: "logs"
+  runs: "runs"
+
+logging:
+  level: "INFO"
+  console: true
+  file: true
