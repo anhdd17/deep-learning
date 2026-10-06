@@ -1,0 +1,82 @@
+# dataset
+data_dir: '/home/cs1_user6/datasets/Brisc2025/classification_task'
+dataset: ''
+num_classes: 4
+img_size: 224
+val_split: test
+
+# data augmentation — ImageNet stats, conservative for medical imaging
+mean:
+    - 0.485
+    - 0.456
+    - 0.406
+std:
+    - 0.229
+    - 0.224
+    - 0.225
+crop_pct: 0.875
+scale:
+    - 0.8
+    - 1.0
+ratio:
+    - 0.75
+    - 1.333
+color_jitter: 0.4
+interpolation: bicubic
+train_interpolation: bicubic
+aa: rand-m7-n2-mstd0.5-inc1
+reprob: 0.1
+remode: const
+
+# no mixup — dataset too small (5k images)
+mixup: 0.0
+cutmix: 0.0
+mixup_prob: 0.0
+
+# model — spikformer_imagenet, lightweight variant for small dataset
+model: "spikformer_imagenet"
+step: 4
+patch_size: 16
+in_channels: 3
+embed_dim: 384
+num_heads: 8
+mlp_ratio: 4
+attn_scale: 0.125
+mlp_drop: 0.1
+attn_drop: 0.0
+depths: 4
+
+# embed layer
+embed_layer: 'SPS'
+attn_layer: 'SSA'
+
+# neuron
+tau: 2.0
+threshold: 1.0
+act_function: SigmoidGrad
+node_type: LIFNode
+alpha: 4.0
+
+# train — FP16 (Turing GPU, no BF16)
+amp: True
+batch_size: 64
+val_batch_size: 64
+lr: 3e-4
+min_lr: 1e-6
+sched: cosine
+weight_decay: 5e-2
+epochs: 100
+cooldown_epochs: 5
+warmup_epochs: 10
+warmup_lr: 1e-5
+opt: adamw
+smoothing: 0.1
+workers: 4
+seed: 42
+log_interval: 50
+
+# output
+output: '/home/cs1_user6/logs/step/spikformer_brisc2025'
+
+# device
+device: 0
